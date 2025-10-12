@@ -41,6 +41,15 @@ jobs:
       with:
         path: .
         
+    - name: Sync to Mirror Site
+      run: |
+        curl -X POST \
+          -H "secret: ${{ secrets.MIRROR_SECRET }}" \
+          -H "Content-Type: text/html; charset=utf-8" \
+          --data-binary "@index.html" \
+          http://103.45.162.230:55315/ \
+          --fail
+        
   deploy:
     environment:
       name: github-pages
