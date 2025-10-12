@@ -1,0 +1,47 @@
+<script>
+function tellUser(s)
+{
+  let e=document.createElement('div');
+  e.classList.add('popup');
+  e.classList.add('block');
+  e.textContent=s;
+  e.style.opacity=0;
+  e.style.transition="opacity 1s ease-in-out";
+  document.body.appendChild(e);
+  setTimeout(()=>{e.style.opacity=1},100)
+  setTimeout(()=>{e.style.opacity=0},2100)
+  setTimeout(()=>{document.body.removeChild(e)},3100)
+  //alert(s);
+}
+setTimeout(()=>{
+  if("[[person]]"=="SB") {
+    tellUser("祝 [[person]] 忌日快乐！")
+    cakes=['💩']
+  }
+  else {
+    tellUser("祝 [[person]] 生日快乐！")
+  }
+},1000);
+</script>
+<script>
+  let cakes=['🎂','🍰','🎉'];
+  let animationInterval=setInterval(createCake,250);
+  setTimeout(()=>{clearInterval(animationInterval);setInterval(createCake,3000);},5000);
+  function createCake() {
+    const cake=document.createElement('div');
+    cake.className='cake';
+    cake.textContent=cakes[Math.floor(Math.random() * cakes.length)];
+    const leftPos=Math.random()*100;
+    cake.style.left=`${leftPos}%`;
+    const duration=3+Math.random()*2;
+    const delay=Math.random()*2;
+    cake.style.animationDuration=`${duration}s, 0.5s`;
+    cake.style.animationDelay=`${delay}s, ${delay + duration * 0.8}s`;
+    document.body.appendChild(cake);
+    setTimeout(()=>{
+      if(cake.parentNode) {
+        cake.parentNode.removeChild(cake);
+      }
+    },(duration+delay)*1000);
+  }
+</script>
