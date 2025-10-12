@@ -1,11 +1,10 @@
-from http.server import *
-from socketserver import *
 from datetime import datetime
 from json import loads as parse
+import pytz
 import os
 import re
 import sys
-import glob
+BJTIME=pytz.timezone('Asia/Shanghai')
 def detect_encoding(file_path):
   encodings=['utf-8', 'gbk', 'ansi']
   for encoding in encodings:
@@ -39,17 +38,19 @@ def parse_date_from_filename(filename):
     pass
   return None
 def getExtra():
-  datenow=datetime.now().strftime("%m%d")
+  datenow=datetime.now().astimezone(BJTIME).strftime("%m%d")
   if datenow in birthday:
     with open("birthday.html.part") as f:
       return f.read().replace('[[person]]',birthday[datenow])
   return ""
 def formattime(date):
+  date=date.astimezone(BJTIME)
   if os.name=='nt':
     return date.strftime("%Y年%#m月%#d日")
   else:
     return date.strftime("%Y年%-m月%-d日")
 def formattimeDetail(date):
+  date=date.astimezone(BJTIME)
   if os.name=='nt':
     return date.strftime("%Y年%#m月%#d日%H时%M分")
   else:
