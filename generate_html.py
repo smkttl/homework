@@ -63,6 +63,6 @@ def read():
   output='\n'.join([f'{parseddate}\n<div class="block alignmiddle">{read_file_content(file_path)}</div>\n' for date, filename, file_path, parseddate in recent_files])
   return output
 with open("template.html","r",encoding=detect_encoding('template.html')) as f,open('index.html','wb') as wfile:
-  wfile.write(f.read().replace("{{content}}",read()).replace("{{extra}}",getExtra()).encode('utf-8'))
+  wfile.write(f.read().replace("{{content}}",read()).replace("{{generateTime}}",formattime(datetime.now())).replace("{{extra}}",getExtra()).encode('utf-8'))
 with open("style.template.css","r",encoding=detect_encoding('style.template.css')) as f,open("style.css",'wb') as wfile:
   wfile.write(f.read().encode('utf-8'))
