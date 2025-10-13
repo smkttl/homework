@@ -51,3 +51,14 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
+      
+    - name: Deploy to CodeSandBox
+-      run: |
+-        curl -X POST \
+-          -H "secret: ${{ secrets.MIRROR_SECRET }}" \
+-          -H "Content-Type: text/html; charset=utf-8" \
+-          --data-binary "@index.html" \
+-          http://sjspkz-8888.csb.app/ \
+-          --max-time 60 \
+-          --fail
+
