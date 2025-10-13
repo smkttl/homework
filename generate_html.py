@@ -68,5 +68,5 @@ def read():
   recent_files=files_with_dates[:5]
   output='\n'.join([f'{parseddate}\n<div class="block alignmiddle">{read_file_content(file_path)}</div>\n' for date, filename, file_path, parseddate in recent_files])
   return output
-with open("template.html","r",encoding=detect_encoding('template.html')) as f,open("style.css","r",encoding=detect_encoding('style.css')) as fstyle,open('index.html','wb') as wfile:
+with open("template.html","r",encoding=detect_encoding('template.html')) as f,open("style.css","r",encoding=detect_encoding('style.css')) as fstyle,open('dist/index.html','wb') as wfile:
   wfile.write(f.read().replace("{{content}}",read()).replace("{{generateTime}}",formattimeDetail(datetime.now())).replace("{{extra}}",getExtra()).replace("{{stylesheet}}",fstyle.read()).encode('utf-8'))
