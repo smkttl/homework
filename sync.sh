@@ -13,5 +13,6 @@ git config user.email 3121768621@qq.com
 git add .
 git commit -m "自动同步: $(date '+%Y-%m-%d %H:%M:%S')"
 git push origin master
+rm -rf "$HOME/.sshtemp"
 echo "Press any key to continue..."
 read
