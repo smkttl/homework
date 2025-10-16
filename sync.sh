@@ -1,7 +1,12 @@
-#!/bin/bash
+﻿#!/bin/bash
 set -e
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo $ROOT
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+mkdir -p "$HOME/.sshtemp"
+cp "$ROOT/.ssh/id_rsa" "$HOME/.sshtemp/id_rsa"
+chmod 700 "$HOME/.sshtemp/id_rsa"
+export GIT_SSH_COMMAND="ssh -i $HOME/.sshtemp/id_rsa -o StrictHostKeyChecking=no"
+echo "SSH 私钥设置完毕"
 #git config --global --add safe.directory $ROOT
 git config user.name homework-bot
 git config user.email 3121768621@qq.com
