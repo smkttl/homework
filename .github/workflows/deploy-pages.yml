@@ -44,10 +44,6 @@ jobs:
     - name: Deploy to CodeSandBox
       run: |
         curl -X POST --data-binary "@dist/index.html" -H "secret: ${{ secrets.MIRROR_SECRET }}" https://sjspkz-8888.csb.app/ --max-time 60 --fail
-      
-    - name: Deploy to RainYun
-      run: |
-        curl -X POST --data-binary "@dist/index.html" -H "secret: ${{ secrets.MIRROR_SECRET }}" http://gmt.rainplay.cn:55315/ --max-time 60 --fail
         
   deploy:
     environment:
