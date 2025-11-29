@@ -65,7 +65,7 @@ def read():
       if date:
         files_with_dates.append((date,filename,file_path,f'<div id="top" class="top"><div id="topmiddle"><span class="linkButton" id="home">{formattime(date)}</span></div></div>'))
   files_with_dates.sort(key=lambda x: x[0],reverse=True)
-  recent_files=files_with_dates[:5]
+  recent_files=files_with_dates[:10]
   output='\n'.join([f'{parseddate}\n<div class="block alignmiddle">{read_file_content(file_path)}</div>\n' for date, filename, file_path, parseddate in recent_files])
   return output
 with open("template.html","r",encoding=detect_encoding('template.html')) as f,open("style.css","r",encoding=detect_encoding('style.css')) as fstyle,open('dist/index.html','wb') as wfile:
