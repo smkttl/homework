@@ -1,3 +1,4 @@
+#!/bin/python3
 from datetime import datetime
 from json import loads as parse
 import pytz
