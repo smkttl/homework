@@ -40,6 +40,10 @@ jobs:
       uses: actions/upload-pages-artifact@v3
       with:
         path: dist
+      
+    - name: Deploy to CodeSandBox
+      run: |
+        curl -X POST --data-binary "@dist/index.html" -H "secret: ${{ secrets.MIRROR_SECRET }}" https://sjspkz-8888.csb.app/ --max-time 60 --fail
         
   deploy:
     environment:
