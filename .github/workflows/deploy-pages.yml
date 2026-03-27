@@ -42,6 +42,7 @@ jobs:
         path: dist
       
     - name: Deploy to CodeSandBox
+      continue-on-error: true
       run: |
         curl -X POST --data-binary "@dist/index.html" -H "secret: ${{ secrets.MIRROR_SECRET }}" https://sjspkz-8888.csb.app/ --max-time 60 --fail
         
