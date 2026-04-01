@@ -70,4 +70,4 @@ def read():
   output='\n'.join([f'{parseddate}\n<div class="block alignmiddle">{read_file_content(file_path)}</div>\n' for date, filename, file_path, parseddate in recent_files])
   return output
 with open("template.html","r",encoding=detect_encoding('template.html')) as f,open("style.css","r",encoding=detect_encoding('style.css')) as fstyle,open('dist/index.html','wb') as wfile:
-  wfile.write(f.read().replace("{{content}}",read()).replace("{{generateTime}}",formattimeDetail(datetime.now())).replace("{{extra}}",getExtra()).replace("{{stylesheet}}",fstyle.read()).encode('utf-8'))
+  wfile.write(f.read().replace("{{content}}",read()).replace("{{generateTime}}",formattimeDetail(datetime.now())).replace("{{extra}}",getExtra()).replace('4月1日','3月32日').replace("{{stylesheet}}",fstyle.read()).encode('utf-8'))
